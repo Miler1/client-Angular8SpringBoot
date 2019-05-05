@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: '', redirectTo: 'customer', pathMatch: 'full' },
   { path: 'customer', component: CustomersListComponent },
   { path: 'add', component: CreateCustomerComponent },
-  { path: 'findbyid', component: SearchCustomersComponent },
+  { path: 'findbyage', component: SearchCustomersComponent },
   { path: 'pessoa', component: PessoasListComponent },
-  { path: 'add', component: CreatePessoaComponent },
+  { path: 'addpessoa', component: CreatePessoaComponent },
   { path: 'findbyid', component: PessoaSearchComponent },
 ];
 

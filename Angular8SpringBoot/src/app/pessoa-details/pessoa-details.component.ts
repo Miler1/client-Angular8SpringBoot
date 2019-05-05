@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { PessoaService } from '../pessoa.service';
+import { Pessoa } from '../pessoa';
+import { PessoasListComponent } from '../pessoas-list/pessoas-list.component';
 
 @Component({
   selector: 'app-pessoa-details',
@@ -7,9 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PessoaDetailsComponent implements OnInit {
 
-  constructor() { }
+  @Input() pessoa: Pessoa;
+
+  constructor(private pessoaService: PessoaService, private listComponent: PessoasListComponent) { }
 
   ngOnInit() {
+  }
+
+  updateActive(isActive: boolean) {
+    this.pessoaService.updatePessoa(this.pessoa.id,
+      { name: this.pessoa.nome, age: this.pessoa.cpf, active: isActive })
+      .subscribe(
+        data => {
+          console.log(data);
+          this.pessoa = data as Pessoa;
+        },
+        error => console.log(error));
+  }
+
+  deleteCustomer() {
+    this.pessoaService.deletePessoa(this.pessoa.id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.listComponent.reloadData();
+        },
+        error => console.log(error));
   }
 
 }

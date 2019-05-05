@@ -3,12 +3,12 @@
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="customer.name" name="name">
+      <input type="text" class="form-control" id="name" required [(ngModel)]="pessoa.name" name="name">
     </div>
 
     <div class="form-group">
-      <label for="age">Age</label>
-      <input type="text" class="form-control" id="age" required [(ngModel)]="customer.age" name="age">
+      <label for="cpf">Age</label>
+      <input type="text" class="form-control" id="cpf" required [(ngModel)]="pessoa.cpf" name="cpf">
     </div>
 
     <button type="submit" class="btn btn-success">Submit</button>
@@ -17,5 +17,5 @@
 
 <div [hidden]="!submitted">
   <h4>You submitted successfully!</h4>
-  <button class="btn btn-success" (click)="newCustomer()">Add</button>
+  <button class="btn btn-success" (click)="newPessoa()">Add</button>
 </div>
