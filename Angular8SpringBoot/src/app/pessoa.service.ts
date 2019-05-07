@@ -8,7 +8,12 @@ import { Observable } from 'rxjs';
 export class PessoaService {
 
   private baseUrl = 'http://localhost:8080/api/pessoas';
-
+  private ufUrl = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
+  
+  // getUf(event){
+  //   this.name = event.target.innerHTML;
+  // }
+  
   constructor(private http: HttpClient) { }
 
   getPessoa(id: number): Observable<any> {
@@ -28,6 +33,7 @@ export class PessoaService {
   }
 
   getPessoasList(): Observable<any> {
+    console.log(this.http.get(this.baseUrl));
     return this.http.get(this.baseUrl);
   }
 
@@ -37,6 +43,11 @@ export class PessoaService {
 
   deleteAll(): Observable<any> {
     return this.http.delete(this.baseUrl);
+  }
+
+  getUf():Observable<any> {
+    console.log('uf');
+    return this.http.get(this.ufUrl);
   }
 
 }

@@ -2,7 +2,7 @@ export class Pessoa{
 	id:number;
 	nome:string;
 	cpf:string;
-	datanascimento:string;
+	dataNascimento:string;
 	peso:number;
 	uf:string;
 }

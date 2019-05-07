@@ -1,8 +1,7 @@
 <h3>Pessoas</h3>
-<div *ngFor="let pessoa of pessoas | async" style="width: 300px;">
-  <app-pessoa-details [pessoa]='pessoa'></app-pessoa-details>
+<div *ngFor="let pessoa of pessoas | async"><app-pessoa-details [pessoa]='pessoa'></app-pessoa-details>
 </div>
 
-<div>
+<!-- <div>
   <button type="button" class="button btn-danger" (click)='deletePessoas()'>Delete All</button>
-</div>
+</div> -->

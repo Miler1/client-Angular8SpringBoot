@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,8 @@ import { CreatePessoaComponent } from './create-pessoa/create-pessoa.component';
 import { PessoaDetailsComponent } from './pessoa-details/pessoa-details.component';
 import { PessoasListComponent } from './pessoas-list/pessoas-list.component';
 import { PessoaSearchComponent } from './pessoa-search/pessoa-search.component';
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,13 @@ import { PessoaSearchComponent } from './pessoa-search/pessoa-search.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgbModule.forRoot(),
+    SweetAlert2Module.forRoot(),
+    ReactiveFormsModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

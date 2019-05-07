@@ -18,9 +18,10 @@ export class PessoaDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  updateActive(isActive: boolean) {
+  updatePessoa() {
     this.pessoaService.updatePessoa(this.pessoa.id,
-      { name: this.pessoa.nome, age: this.pessoa.cpf, active: isActive })
+      { nome: this.pessoa.nome, cpf: this.pessoa.cpf, 
+          dataNascimento: this.pessoa.dataNascimento, peso: this.pessoa.peso, uf: this.pessoa.uf })
       .subscribe(
         data => {
           console.log(data);
@@ -29,7 +30,7 @@ export class PessoaDetailsComponent implements OnInit {
         error => console.log(error));
   }
 
-  deleteCustomer() {
+  deletePessoa() {
     this.pessoaService.deletePessoa(this.pessoa.id)
       .subscribe(
         data => {

@@ -31,5 +31,6 @@ export class PessoasListComponent implements OnInit {
 
   reloadData() {
     this.pessoas = this.pessoaService.getPessoasList();
+    console.log(this.pessoas);
   }
 }
