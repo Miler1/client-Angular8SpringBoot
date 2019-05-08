@@ -10,10 +10,6 @@ export class PessoaService {
   private baseUrl = 'http://localhost:8080/api/pessoas';
   private ufUrl = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
   
-  // getUf(event){
-  //   this.name = event.target.innerHTML;
-  // }
-  
   constructor(private http: HttpClient) { }
 
   getPessoa(id: number): Observable<any> {
@@ -21,6 +17,7 @@ export class PessoaService {
   }
 
   createPessoa(pessoa: any): Observable<any> {
+    console.log(pessoa);
     return this.http.post(this.baseUrl, pessoa);
   }
 
