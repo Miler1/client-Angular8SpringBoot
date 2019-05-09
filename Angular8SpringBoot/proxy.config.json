@@ -1,6 +1,6 @@
 {
 	"/api/*":{
-		"target":"https://aw-pessoas-api.herokuapp.com",
+		"target":"http://localhost:4200",
 		"secure":false,
 		"logLevel":"debug"
 	}
