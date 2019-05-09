@@ -6,10 +6,8 @@ Requer o node e o npm instalado. Tanto o node quanto o npm são encontrados na p
 # download do repositorio do projeto
 git clone (https://github.com/Miler1/client-Angular8SpringBoot.git)
 
-Entrar na pasta do projeto "Angular8SpringBoot" com o comando "cd" 
-
 # Instalação
-Executar o comando:
+Na pasta do projeto "Angular8SpringBoot" Executar o comando:
 "sudo npm install" para instalar as dependencias do projeto
 
 Executar os comandos:
