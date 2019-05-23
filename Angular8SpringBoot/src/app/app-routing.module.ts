@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CreatePessoaComponent } from './create-pessoa/create-pessoa.component';
 import { PessoasListComponent } from './pessoas-list/pessoas-list.component';
-import { PessoaSearchComponent } from './pessoa-search/pessoa-search.component';
+import { HereMapComponent } from './here-map/here-map.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'pessoa', pathMatch: 'full' },
   { path: 'pessoa', component: PessoasListComponent },
-  { path: 'addpessoa', component: CreatePessoaComponent },
-  { path: 'findbyid', component: PessoaSearchComponent },
+  { path: 'mapa', component: HereMapComponent },
 ];
 
 @NgModule({

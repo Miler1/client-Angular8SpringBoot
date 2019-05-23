@@ -1,13 +1,82 @@
 <div style="padding: 20px;">
-  <!-- <h1 style="color: blue">Crud</h1> -->
   <h3>{{title}}</h3>
   <nav>
-    <!-- <a routerLink="customer" class="btn btn-primary active" role="button" routerLinkActive="active">Customers</a>
-    <a routerLink="add" class="btn btn-primary active" role="button" routerLinkActive="active">Add</a>
-    <a routerLink="findbyage" class="btn btn-primary active" role="button" routerLinkActive="active">Search</a> -->
-    <a routerLink="pessoa" class="btn btn-primary active" role="button" routerLinkActive="active" style="margin-right: 16px;">Pessoas</a>
-    <a routerLink="addpessoa" class="btn btn-primary active" role="button" routerLinkActive="active" style="margin-right:16px;">Adicionar</a>
-    <a routerLink="findbyid" class="btn btn-primary active" role="button" routerLinkActive="active">Pesquisar</a>
+    <a routerLink="pessoa" class="btn btn-primary active" role="button" routerLinkActive="active" style="margin-right: 16px;">Listar</a>
+    <a class="btn btn-primary active" (click)="open(content)" role="button" style="margin-right:16px;">Adicionar</a>
+    <a routerLink="mapa" class="btn btn-primary active" role="button" routerLinkActive="active">Pesquisar</a>
   </nav><hr>
   <router-outlet></router-outlet>
-</div>
+  <!-- Modal de Cadastro de Pessoa -->
+  <ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Cadastro de Pessoa</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div [hidden]="submitted">
+        <form (ngSubmit)="onSubmit()">
+
+          <div class="form-group" [formGroup]="angForm" novalidate>
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" [(ngModel)]="pessoa.nome" name="nome" required formControlName="name">
+          </div>
+    
+          <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['name'].errors.required">
+              <small>Nome é obrigatório.</small>
+            </div>
+          </div>
+
+          <div class="form-group" [formGroup]="angForm" novalidate>
+            <label for="cpf">Cpf</label>
+            <input type="text" class="form-control" id="cpf" required [(ngModel)]="pessoa.cpf" name="cpf" required formControlName="cpf">
+          </div>
+
+          <div *ngIf="angForm.controls['cpf'].invalid && (angForm.controls['cpf'].dirty || angForm.controls['cpf'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['cpf'].errors.required">
+              <small>Cpf é obrigatório.</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="datanascimento">Data de Nascimento</label>
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd" name="dataNascimento" id="dataNascimento" [(ngModel)]="pessoa.dataNascimento" ngbDatepicker #d="ngbDatepicker" [readonly]="true">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="peso">Peso</label>
+            <input type="number" class="form-control" id="peso" required [(ngModel)]="pessoa.peso" name="peso">
+          </div>
+
+          <div class="form-group" [formGroup]="angForm" novalidate>
+            <label for="uf">Estado</label>
+             <select formControlName="uf" class="form-control" required [(ngModel)]="pessoa.uf" name="uf" id="uf" (ngModelChange)="onTestGet()">
+              <option *ngFor="let value of estados" [ngValue]="value.sigla">{{value.nome}}</option>
+            </select> 
+          </div>
+
+          <div *ngIf="angForm.controls['uf'].invalid && (angForm.controls['uf'].dirty || angForm.controls['uf'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['uf'].errors.required">
+              <small>Estado é obrigatório.</small>
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-success" [disabled]="angForm.pristine || angForm.invalid" id="salvar">Salvar</button>
+        </div>
+        </form>
+      </div>
+
+      <div [hidden]="!submitted">
+        <h4>Cadastro realizado com sucesso!</h4>
+        <button class="btn btn-success" (click)="modal.dismiss('Cross click')">OK</button>
+      </div>
+  </div>
+</ng-template>

@@ -1,7 +1,106 @@
-<h3>Pessoas</h3>
-<div *ngFor="let pessoa of pessoas | async"><app-pessoa-details [pessoa]='pessoa'></app-pessoa-details>
-</div>
+<div *ngIf="pessoa">
+<table datatable class="table table-hover">
+	<thead>
+	  <tr>
+	    <th>ID</th>
+	    <th>Nome</th>
+	    <th>CPF</th>
+	    <th>Data de Nascimento</th>
+	    <th>Peso</th>
+	    <th>UF</th>
+	    <th>Ações</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr *ngFor="let pessoa of pessoas | async">
+	    <td>{{pessoa.id}}</td>
+	    <td>{{pessoa.nome}}</td>
+	    <td>{{pessoa.cpf}}</td>
+	    <td>{{pessoa.dataNascimento | date:'dd/MM/yyyy'}}</td>
+	    <td>{{pessoa.peso}}</td>
+	    <td>{{pessoa.uf}}</td>
+	    <td>
+	      <button class="btn btn-info" (click)='open(content, pessoa)'>Editar</button>
+	      <button class="btn btn-danger" (click)='deletePessoa(pessoa.id)' style="margin-left: 16px;">Delete</button>
+	    </td>
+	  </tr>
+	</tbody>
+</table>
+<!-- Modal de Edição de Pessoa -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edição de Pessoa</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div [hidden]="submitted">
+        <form (ngSubmit)="onSubmit(pessoa)">
+          <div class="form-group">
+          	<input type="hidden" class="form-control" id="nome" [(ngModel)]="pessoa.id" name="id">
+          </div>	
+          
+          <div class="form-group" [formGroup]="angForm" novalidate>
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" [(ngModel)]="pessoa.nome" name="nome" required formControlName="name">
+          </div>
+    
+          <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['name'].errors.required">
+              <small>Nome é obrigatório.</small>
+            </div>
+          </div>
 
-<!-- <div>
-  <button type="button" class="button btn-danger" (click)='deletePessoas()'>Delete All</button>
-</div> -->
+          <div class="form-group" [formGroup]="angForm" novalidate>
+            <label for="cpf">Cpf</label>
+            <input type="text" class="form-control" id="cpf" required [(ngModel)]="pessoa.cpf" name="cpf" required formControlName="cpf">
+          </div>
+
+          <div *ngIf="angForm.controls['cpf'].invalid && (angForm.controls['cpf'].dirty || angForm.controls['cpf'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['cpf'].errors.required">
+              <small>Cpf é obrigatório.</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="datanascimento">Data de Nascimento</label>
+            <div class="input-group">
+              <input class="form-control" placeholder="{{ pessoa.dataNascimento | date : 'yyyy-MM-dd' }}" name="dataNascimento" id="dataNascimento" [(ngModel)]="pessoa.dataNascimento" ngbDatepicker #d="ngbDatepicker" [readonly]="true">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="peso">Peso</label>
+            <input type="number" class="form-control" id="peso" required [(ngModel)]="pessoa.peso" name="peso">
+          </div>
+
+          <div class="form-group" [formGroup]="angForm" novalidate>
+            <label for="uf">Estado</label>
+             <select formControlName="uf" class="form-control" required [(ngModel)]="pessoa.uf" name="uf" id="uf" (ngModelChange)="onTestGet()">
+              <option *ngFor="let value of estados" [ngValue]="value.sigla">{{value.nome}}</option>
+            </select> 
+          </div>
+
+          <div *ngIf="angForm.controls['uf'].invalid && (angForm.controls['uf'].dirty || angForm.controls['uf'].touched)" class="alert alert-danger">
+              <div *ngIf="angForm.controls['uf'].errors.required">
+              <small>Estado é obrigatório.</small>
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-success" [disabled]="angForm.pristine || angForm.invalid" id="salvar">Salvar</button>
+        </div>
+        </form>
+      </div>
+
+      <div [hidden]="!submitted">
+        <h4>Atualização realizada com sucesso!</h4>
+        <button class="btn btn-success" (click)="modal.dismiss('Cross click')">OK</button>
+      </div>
+  </div>
+</ng-template>
+</div>

@@ -5,20 +5,17 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreatePessoaComponent } from './create-pessoa/create-pessoa.component';
-import { PessoaDetailsComponent } from './pessoa-details/pessoa-details.component';
 import { PessoasListComponent } from './pessoas-list/pessoas-list.component';
-import { PessoaSearchComponent } from './pessoa-search/pessoa-search.component';
 import { NgbModal, NgbModule, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { DataTablesModule } from "angular-datatables";
+import { HereMapComponent } from './here-map/here-map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreatePessoaComponent,
-    PessoaDetailsComponent,
     PessoasListComponent,
-    PessoaSearchComponent
+    HereMapComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +25,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     HttpClientModule,
     NgbModule.forRoot(),
     SweetAlert2Module.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ],
 
   providers: [{
