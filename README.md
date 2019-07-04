@@ -8,7 +8,9 @@ git clone (https://github.com/Miler1/client-Angular8SpringBoot.git)
 
 # Instalação
 Na pasta do projeto "Angular8SpringBoot" Executar o comando:
-"sudo npm install" para instalar as dependencias do projeto
+"sudo npm install" para instalar as dependencias do projeto no 
+linux é preciso executar como super usuário no windows basta 
+executar "npm install"
 
 Executar os comandos:
 ng build --prod #comando para rodar no ambiente de produção
