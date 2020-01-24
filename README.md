@@ -17,7 +17,3 @@ ng build --prod #comando para rodar no ambiente de produção
 npm start ou ng serve #para subir a aplicação
 
 Após executar os comandos acima a aplicação executará na porta localhost:4200
-
-# Detalhe:
-O Aplicativo possui uma versão hospedada no site da heroku segue o link para acesso:
-(https://aw-angular8-spring-boot.herokuapp.com/pessoa)
