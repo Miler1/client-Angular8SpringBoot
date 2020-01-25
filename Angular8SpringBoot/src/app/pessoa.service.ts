@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PessoaService {
 
-  private baseUrl = 'http://localhost:8080/api/pessoas';
+  private baseUrl = 'https://aw-springboot-restapi-postgres.herokuapp.com/api/pessoas';
   private ufUrl = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
   
   constructor(private http: HttpClient) { }

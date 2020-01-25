@@ -13,7 +13,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppComponent implements OnInit {
   
-  title = 'Angular 8 + Spring Boot';
+  title = '';
   closeResult: string;
 
   pessoas: Observable<Pessoa[]>;
@@ -47,6 +47,24 @@ export class AppComponent implements OnInit {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+  }
+
+  abrirTabela() {
+    /*$('#dtMaterialDesignExample').DataTable();
+    $('#dtMaterialDesignExample_wrapper').find('label').each(function () {
+    $(this).parent().append($(this).children());
+    });
+    $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('input').each(function () {
+    $('input').attr("placeholder", "Search");
+    $('input').removeClass('form-control-sm');
+    });
+    $('#dtMaterialDesignExample_wrapper .dataTables_length').addClass('d-flex flex-row');
+    $('#dtMaterialDesignExample_wrapper .dataTables_filter').addClass('md-form');
+    $('#dtMaterialDesignExample_wrapper select').removeClass(
+    'custom-select custom-select-sm form-control form-control-sm');
+    $('#dtMaterialDesignExample_wrapper select').addClass('mdb-select');
+    //$('#dtMaterialDesignExample_wrapper .mdb-select').materialSelect();
+    $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('label').remove();*/
   }
 
   private getDismissReason(reason: any): string {
