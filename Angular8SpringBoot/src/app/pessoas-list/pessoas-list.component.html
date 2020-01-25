@@ -1,14 +1,14 @@
 <div *ngIf="pessoa">
-<table datatable class="table table-hover">
+<table id="dtMaterialDesignExample" class="table table-hover table-bordered table-sm" cellspacing="0" width="100%">
 	<thead>
 	  <tr>
-	    <th>ID</th>
-	    <th>Nome</th>
-	    <th>CPF</th>
-	    <th>Data de Nascimento</th>
-	    <th>Peso</th>
-	    <th>UF</th>
-	    <th>Ações</th>
+	    <th class="th-sm">ID</th>
+	    <th class="th-sm">Nome</th>
+	    <th class="th-sm">CPF</th>
+	    <th class="th-sm">Data de Nascimento</th>
+	    <th class="th-sm">Peso</th>
+	    <th class="th-sm">UF</th>
+	    <th class="th-sm">Ações</th>
 	  </tr>
 	</thead>
 	<tbody>
@@ -20,8 +20,8 @@
 	    <td>{{pessoa.peso}}</td>
 	    <td>{{pessoa.uf}}</td>
 	    <td>
-	      <button class="btn btn-info" (click)='open(content, pessoa)'>Editar</button>
-	      <button class="btn btn-danger" (click)='deletePessoa(pessoa.id)' style="margin-left: 16px;">Delete</button>
+	      <button class="btn btn-warning btn-sm my-0" (click)='open(content, pessoa)'>Editar</button>
+	      <button class="btn btn-danger btn-sm my-0" (click)='deletePessoa(pessoa.id)' style="margin-left: 16px;">Delete</button>
 	    </td>
 	  </tr>
 	</tbody>
@@ -92,14 +92,14 @@
             </div>
           </div>
           <div class="modal-footer">
-          <button type="submit" class="btn btn-success" [disabled]="angForm.pristine || angForm.invalid" id="salvar">Salvar</button>
+          <button type="submit" class="btn btn-success btn-sm my-0" [disabled]="angForm.pristine || angForm.invalid" id="salvar">Salvar</button>
         </div>
         </form>
       </div>
 
       <div [hidden]="!submitted">
         <h4>Atualização realizada com sucesso!</h4>
-        <button class="btn btn-success" (click)="modal.dismiss('Cross click')">OK</button>
+        <button class="btn btn-success btn-sm my-0" (click)="modal.dismiss('Cross click')">OK</button>
       </div>
   </div>
 </ng-template>

@@ -22,7 +22,7 @@ class DataTablesResponse {
 })
 export class PessoasListComponent implements OnInit {
 
-  dtOptions: DataTables.Settings = {};
+  //dtOptions: DataTables.Settings = {};
   pessoa: Pessoa = new Pessoa();
   pessoas: Observable<Pessoa[]>;
   //@Input() pessoa: Pessoa;
@@ -38,10 +38,10 @@ export class PessoasListComponent implements OnInit {
 
   ngOnInit() {
     this.reloadData();
-    this.dtOptions = {
+    /*this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5
-    };
+    };*/
     this.pessoas = this.pessoaService.getPessoasList();
   }
 
