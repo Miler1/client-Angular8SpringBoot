@@ -34,7 +34,7 @@
     "angular-font-awesome": "^3.1.2",
     "chart.js": "^2.8.0",
     "core-js": "^2.5.4",
-    "datatables.net": "^1.10.19",
+    "datatables.net": "^1.10.22",
     "datatables.net-dt": "^1.10.19",
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
